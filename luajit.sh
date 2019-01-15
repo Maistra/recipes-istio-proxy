@@ -2,8 +2,8 @@
 
 set -e
 
-VERSION=2.0.5
-SHA256=8bb29d84f06eb23c7ea4aa4794dbb248ede9fcb23b6989cbef81dc79352afc97
+VERSION=2.1.0-beta3
+SHA256=409f7fe570d3c16558e594421c47bdd130238323c9d6fd6c83dedd2aaeb082a8
 
 if [ "${FETCH}" ]; then
   if [ ! -d "LuaJIT-$VERSION" ]; then

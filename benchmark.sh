@@ -4,7 +4,7 @@ set -e
 
 if [ "${FETCH}" ]; then
   if [ ! -d "benchmark" ]; then
-    export COMMIT="e1c3a83b8197cf02e794f61228461c27d4e78cfb"
+    export COMMIT="505be96ab23056580a3a2315abba048f4428b04e"
 
     git clone https://github.com/google/benchmark.git
     (cd benchmark; git reset --hard "$COMMIT")
