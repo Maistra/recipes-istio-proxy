@@ -12,14 +12,14 @@ CPPFLAGS="$(for f in $CXXFLAGS; do if [[ $f =~ -D.* ]]; then echo $f; fi; done |
 CFLAGS="$(for f in $CXXFLAGS; do if [[ ! $f =~ -D.* ]]; then echo $f; fi; done | tr '\n' ' ')"
 
 if [ "${FETCH}" ]; then
-  if [ ! -d "c-ares-$VERSION" ]; then
+  if [ ! -d "$VERSION" ]; then
     curl https://github.com/c-ares/c-ares/releases/download/"$TAG"/"$VERSION".tar.gz -sLo "$VERSION".tar.gz \
-      && echo "$SHA256" c-ares-"$VERSION".tar.gz | sha256sum --check
-    tar xf c-ares-"$VERSION".tar.gz
+      && echo "$SHA256" "$VERSION".tar.gz | sha256sum --check
+    tar xf "$VERSION".tar.gz
   fi
 else
-  cp -rf ${RECIPES_DIR}/c-ares-"$VERSION" .
-  cd c-ares-"$VERSION"
+  cp -rf ${RECIPES_DIR}/"$VERSION" .
+  cd "$VERSION"
   mkdir build
   cd build
 
