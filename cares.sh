@@ -3,7 +3,7 @@
 set -e
 
 TAG=cares-1_15_0
-VERSION=cares-1_15_0
+VERSION=c-ares-1_15_0
 SHA256=6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852
 # cares is fussy over whether -D appears inside CFLAGS vs. CPPFLAGS, oss-fuzz
 # sets CFLAGS with -D, so we need to impedance match here. In turn, OS X automake
