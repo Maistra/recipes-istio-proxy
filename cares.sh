@@ -13,7 +13,7 @@ CFLAGS="$(for f in $CXXFLAGS; do if [[ ! $f =~ -D.* ]]; then echo $f; fi; done |
 
 if [ "${FETCH}" ]; then
   if [ ! -d "c-ares-$VERSION" ]; then
-    curl https://github.com/c-ares/c-ares/releases/download/"$TAG"/"$VERSION".tar.gz -sLo "$VERSION".tar.gz \c
+    curl https://github.com/c-ares/c-ares/releases/download/"$TAG"/"$VERSION".tar.gz -sLo "$VERSION".tar.gz \
       && echo "$SHA256" c-ares-"$VERSION".tar.gz | sha256sum --check
     tar xf c-ares-"$VERSION".tar.gz
   fi
