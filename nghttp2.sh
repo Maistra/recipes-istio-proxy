@@ -2,11 +2,12 @@
 
 set -e
 
-VERSION=e5b3f9addd49bca27e2f99c5c65a564eb5c0cf6d  # 2018-06-09
+VERSION=1.35.1
+SHA256=cb70261634c33dc5adbe780afcfc5dab17838ee303631a02b983c6a217bc16ba
 
 if [ "${FETCH}" ]; then
   if [ ! -d "nghttp2-$VERSION" ]; then
-    curl https://github.com/nghttp2/nghttp2/archive/"$VERSION".tar.gz -sLo nghttp2-"$VERSION".tar.gz
+    curl https://github.com/nghttp2/nghttp2/releases/download/v"$VERSION"/nghttp2-"$VERSION".tar.gz -sLo nghttp2-"$VERSION".tar.gz
     tar xf nghttp2-"$VERSION".tar.gz
   fi
 else

@@ -2,8 +2,9 @@
 
 set -e
 
-VERSION=cares-1_14_0
-SHA256=62dd12f0557918f89ad6f5b759f0bf4727174ae9979499f5452c02be38d9d3e8
+TAG=cares-1_15_0
+VERSION=c-ares-1.15.0
+SHA256=6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852
 # cares is fussy over whether -D appears inside CFLAGS vs. CPPFLAGS, oss-fuzz
 # sets CFLAGS with -D, so we need to impedance match here. In turn, OS X automake
 # is fussy about newlines in CFLAGS/CPPFLAGS, so translate them into spaces.
@@ -11,14 +12,14 @@ CPPFLAGS="$(for f in $CXXFLAGS; do if [[ $f =~ -D.* ]]; then echo $f; fi; done |
 CFLAGS="$(for f in $CXXFLAGS; do if [[ ! $f =~ -D.* ]]; then echo $f; fi; done | tr '\n' ' ')"
 
 if [ "${FETCH}" ]; then
-  if [ ! -d "c-ares-$VERSION" ]; then
-    curl https://github.com/c-ares/c-ares/archive/"$VERSION".tar.gz -sLo c-ares-"$VERSION".tar.gz \
-      && echo "$SHA256" c-ares-"$VERSION".tar.gz | sha256sum --check
-    tar xf c-ares-"$VERSION".tar.gz
+  if [ ! -d "$VERSION" ]; then
+    curl https://github.com/c-ares/c-ares/releases/download/"$TAG"/"$VERSION".tar.gz -sLo "$VERSION".tar.gz \
+      && echo "$SHA256" "$VERSION".tar.gz | sha256sum --check
+    tar xf "$VERSION".tar.gz
   fi
 else
-  cp -rf ${RECIPES_DIR}/c-ares-"$VERSION" .
-  cd c-ares-"$VERSION"
+  cp -rf ${RECIPES_DIR}/"$VERSION" .
+  cd "$VERSION"
   mkdir build
   cd build
 
