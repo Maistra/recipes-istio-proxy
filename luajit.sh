@@ -18,7 +18,7 @@ else
   # Fixup Makefile with things that cannot be set via env var.
   cat > ../luajit_make.diff << 'EOF'
 diff --git a/src/Makefile b/src/Makefile
-index f7f81a4..e698517 100644
+index f56465d..3f4f2fa 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -27,7 +27,7 @@ NODOTABIVER= 51
@@ -30,7 +30,7 @@ index f7f81a4..e698517 100644
  #
  # Use this if you want to force a 32 bit build on a 64 bit multilib OS.
  #CC= $(DEFAULT_CC) -m32
-@@ -74,10 +74,10 @@ CCWARN= -Wall
+@@ -71,10 +71,10 @@ CCWARN= -Wall
  # as dynamic mode.
  #
  # Mixed mode creates a static + dynamic library and a statically linked luajit.
@@ -43,7 +43,7 @@ index f7f81a4..e698517 100644
  #
  # Dynamic mode creates a dynamic library and a dynamically linked luajit.
  # Note: this executable will only run when the library is installed!
-@@ -102,7 +102,7 @@ XCFLAGS=
+@@ -99,7 +99,7 @@ XCFLAGS=
  # enabled by default. Some other features that *might* break some existing
  # code (e.g. __pairs or os.execute() return values) can be enabled here.
  # Note: this does not provide full compatibility with Lua 5.2 at this time.
@@ -52,7 +52,7 @@ index f7f81a4..e698517 100644
  #
  # Disable the JIT compiler, i.e. turn LuaJIT into a pure interpreter.
  #XCFLAGS+= -DLUAJIT_DISABLE_JIT
-@@ -564,7 +564,7 @@ endif
+@@ -587,7 +587,7 @@ endif
 
  Q= @
  E= @echo
