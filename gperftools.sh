@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR=$(cd $(dirname $0) ; pwd -P)
+
 set -e
 
 VERSION=2.7
@@ -12,6 +14,9 @@ if [ "${FETCH}" ]; then
     tar xf gperftools-"$VERSION".tar.gz
   fi
 else
+  if [ -z "${RECIPES_DIR}" ] ; then
+    RECIPES_DIR=$(echo $DIR | sed -e 's+/bazel/base/external.*$++')
+  fi
   cp -rf ${RECIPES_DIR}/gperftools-"$VERSION" .
   cd gperftools-"$VERSION"
   aclocal
